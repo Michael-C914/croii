@@ -1,0 +1,8 @@
+# Enviroment
+python -m venv myvenv
+
+# Intall dependencies
+pip install -r requirements.txt
+
+# Add dependencies
+pip freeze > requirements.txt
