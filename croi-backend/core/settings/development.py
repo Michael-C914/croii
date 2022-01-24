@@ -10,20 +10,19 @@ from .base import*
 #     }
 # }
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
 DATABASES = {
     'default': {
-        # 'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.mysql'),
-        # 'NAME': os.environ.get('SQL_DATABASE', os.path.join(BASE_DIR, 'croii_db')),
-        # 'USER': os.environ.get('SQL_USER', 'croii_user'),
-        # 'PASSWORD': os.environ.get('SQL_PASSWORD', 'password'),
-        # 'HOST': os.environ.get('SQL_HOST', 'localhost'),
-        # 'PORT': os.environ.get('SQL_PORT', '3306'),
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'croii_db',
-        'USER': 'croii_user',
-        'PASSWORD': 'password',
-        'HOST': '0.0.0.0',
-        'PORT': '3306',
+        'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.mysql'),
+        'NAME': os.environ.get('SQL_DATABASE', 'croii_db'),
+        'USER': os.environ.get('SQL_USER', 'croii_user'),
+        'PASSWORD': os.environ.get('SQL_PASSWORD', 'password'),
+        'HOST': os.environ.get('SQL_HOST', 'localhost'),
+        'PORT': os.environ.get('SQL_PORT', '3306'),
     }
 }
 
