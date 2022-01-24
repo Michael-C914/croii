@@ -29,5 +29,6 @@ urlpatterns = [
          name='token_refresh'),  # Get Refresh Token
 ]
 
-if settings.DEBUG: 
-    urlpatterns += static(settings.MEDIA_URL, documents_root= settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          documents_root=settings.MEDIA_ROOT)

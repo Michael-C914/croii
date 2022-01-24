@@ -62,6 +62,15 @@ class SpecialUser(models.Model):
     bank_statement = models.CharField(max_length=50)
 
 
+class DocumentUser(models.Model):
+    special_user = models.ForeignKey(
+        SpecialUser,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name="document_user"
+    )
+
+
 class UserJuridic(models.Model):
     user = models.OneToOneField(
         CustomUser,
