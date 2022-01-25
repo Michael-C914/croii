@@ -74,13 +74,15 @@ class DocumentUser(models.Model):
 class UserJuridic(models.Model):
     user = models.OneToOneField(
         CustomUser,
-        on_delete=models.CASCADE,
-        related_name='user_juridic'
+        on_delete=models.SET_NULL,
+        related_name='user_juridic',
+        null=True, blank=True
     )
     special_user = models.OneToOneField(
         SpecialUser,
-        on_delete=models.CASCADE,
-        related_name='user_juridic'
+        on_delete=models.SET_NULL,
+        related_name='user_juridic',
+        null=True, blank=True
     )
     RUC = models.CharField(max_length=11)
     name = models.CharField(max_length=50)
