@@ -7,10 +7,12 @@ from rest_framework.routers import DefaultRouter
 from user.views.session_manager import BlacklistTokenUpdateView, MyTokenObtainPairView
 from user.views.user_juridic_view import UserJuridicViewSet
 from user.views.user_natural_view import UserNaturalViewSet
+from user.views.special_user_view import SpecialUserViewSet
 
 router = DefaultRouter()
 router.register(r'user_juridic', UserJuridicViewSet, basename='user_juridic')
 router.register(r'user_natural', UserNaturalViewSet, basename='user_natural')
+router.register(r'special_user', SpecialUserViewSet, basename='special_user')
 
 urlpatterns = [
     path('signout/blacklist/', BlacklistTokenUpdateView.as_view(),
