@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 
-from user.views import BlacklistTokenUpdateView, MyTokenObtainPairView
+from user.views.session_manager import BlacklistTokenUpdateView, MyTokenObtainPairView
 
 
 urlpatterns = [
