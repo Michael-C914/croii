@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 
-from user.serializer.token import MyTokenObtainPairSerializer
+from user.serializer.token_serializer import MyTokenObtainPairSerializer
 
 # Serializers
 

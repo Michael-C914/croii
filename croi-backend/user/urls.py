@@ -4,7 +4,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 # Views
-from user.views.session_manager import BlacklistTokenUpdateView, MyTokenObtainPairView
+from user.views.session_manager_view import BlacklistTokenUpdateView, MyTokenObtainPairView
 from user.views.user_juridic_view import UserJuridicViewSet
 from user.views.user_natural_view import UserNaturalViewSet
 from user.views.special_user_view import SpecialUserViewSet
