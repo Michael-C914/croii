@@ -103,4 +103,3 @@ class UserNatural(models.Model):
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
     DNI = models.CharField(max_length=8, unique=True)
-    special_user = models.CharField(max_length=8)
