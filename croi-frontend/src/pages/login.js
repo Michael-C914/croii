@@ -31,11 +31,11 @@ export default function Example() {
 
     console.log(result);
 
-    // if (result && !result.error) {
-    //   router.push('/index')
-    // } else {
-    //   console.log(result);
-    // }
+    if (result && !result.error) {
+      router.push('/')
+    } else {
+      console.log(result);
+    }
   }
 
   useEffect(() => {
