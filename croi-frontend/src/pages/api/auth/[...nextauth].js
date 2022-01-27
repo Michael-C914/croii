@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import jwt from 'jsonwebtoken';
 import { loginApp } from '../../../services/rest/ApiLogin';
+import CredentialsProvider from 'next-auth/providers/credentials'
 
 async function refreshAccessToken(token) {
   try {
@@ -68,20 +69,20 @@ export default NextAuth({
           refresh: user.data.refresh,
           accessTokenExpires: Date.now() + (300)
         }
-        //console.log("Primer Sign In Cred------------------------------------------------------------------------------------------------------------------------");
-        console.log(tok);
-        console.log(user);
-        console.log(account);
+        console.log("Primer Sign In Cred------------------------------------------------------------------------------------------------------------------------");
         return tok;
       }
-      if (Date.now() < token.accessTokenExpires) {
-        //console.log("Devuelve old token------------------------------------------------------------------------------------------------------------------------");
-        console.log(token)
-        return token;
-      }
+      // if (Date.now() < token.accessTokenExpires) {
+      //   //console.log("Devuelve old token------------------------------------------------------------------------------------------------------------------------");
+      //   console.log(token)
+      //   return token;
+      // }
       //console.log("Refresh------------------------------------------------------------------------------------------------------------------------");
+
+      console.log("JWT FUNCTION------------------------------------------------------------------------------------------------------------------------");
       console.log(token);
-      return refreshAccessToken(token);
+      return token
+      // return refreshAccessToken(token);
     },
 
     /**
@@ -91,19 +92,23 @@ export default NextAuth({
      * Mas Información: https://next-auth.js.org/configuration/callbacks#session-callback
      * @returns Objeto sesión que sera usado del lado del cliente
      */
-    async session(session, token) {
+    async session({ session, token }) {
+
+      console.log("------------------------ SESSION ------------------------------------");
       const dec = jwt.decode(token.accessToken, { complete: true });
       session.accessToken = token.accessToken;
-      session.user_id = dec.payload.user_id;
-      session.email = dec.payload.email;
-      session.username = dec.payload.email;
-      session.date_joined = dec.payload.date_joined;
-      session.is_staff = dec.payload.is_staff;
-      session.is_active = dec.payload.is_active;
-      session.is_superuser = dec.payload.is_superuser;
-      session.is_natural = dec.payload.is_natural;
-      session.is_juridic = dec.payload.is_juridic;
-      session.is_project = dec.payload.is_project;
+      const user = {
+        "user_id": dec.payload.user_id,
+        "email": dec.payload.email,
+        "date_joined": dec.payload.date_joined,
+        "is_staff": dec.payload.is_staff,
+        "is_active": dec.payload.is_active,
+        "is_superuser": dec.payload.is_superuser,
+        "is_natural": dec.payload.is_natural,
+        "is_juridic": dec.payload.is_juridic,
+        "is_project": dec.payload.is_project,
+      }
+      session.user = { ...user }
 
       return session;
     }

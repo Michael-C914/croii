@@ -1,8 +1,8 @@
 import apiRest from "../AxiosInstance";
-export const loginApp = async (user, email) => {
+export const loginApp = async (email, password) => {
 	return apiRest.post("/user/api/token/", {
-		password: email,
-		email: user
+		password: password,
+		email: email
 	}, {
 		headers: {
 			accept: '*/*',
