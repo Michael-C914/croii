@@ -1,5 +1,6 @@
 # DRF
 from rest_framework import viewsets
+from rest_framework.permissions import AllowAny
 
 # Models
 from user.models import UserJuridic
