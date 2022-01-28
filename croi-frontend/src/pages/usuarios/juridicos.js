@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 export default function Home() {
   const [Users, fetchUsers] = useState([])
   //const [idUser, setidUser] = useState('')
+ 
 
   const getData = () => {
     fetch('http://127.0.0.1:8000/user/user_juridic/')
@@ -28,6 +29,17 @@ export default function Home() {
    }
  
  }
+
+ var results = [{}]
+const handleSearchChange = (e) =>{
+  console.log(e.target.value)
+  
+  //Métodos  que filtran la información
+  results = Users.filter((person)=> person.name.toLowerCase().split(" ").join("").indexOf(e.target.value.toLowerCase()) !== -1)
+  console.log(results)
+  //Se asigna el valor al estado Filtrados
+  fetchUsers(results)
+}
 
   useEffect(() => {
     getData()
@@ -216,6 +228,15 @@ Inicio
 </ol>
 </nav>
     <h1 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-5">Lista de Usuarios Jurídicos</h1>
+    <div class="mb-5">
+    <div class="container flex  items-center">
+        <div class="relative">
+            <div class="absolute top-4 left-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> </div> 
+            <input onChange={handleSearchChange} type="text" class="bg-gray-200 h-14 w-96 pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Buscar Usuario..."/>
+            <div class="absolute top-2 right-2"> <button class="h-10 w-20 text-white rounded-lg bg-black hover:bg-gray-700">Buscar</button> </div>
+        </div>
+    </div>
+</div>
     <div class="w-full overflow-x-auto">
       <table class="w-full">
         <thead>
