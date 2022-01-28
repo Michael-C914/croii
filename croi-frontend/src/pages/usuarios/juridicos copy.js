@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [Users, fetchUsers] = useState([])
-  //const [idUser, setidUser] = useState('')
 
   const getData = () => {
     fetch('http://127.0.0.1:8000/user/user_juridic/')
@@ -14,20 +13,6 @@ export default function Home() {
         console.log(res)
       })
   }
-  const deleteUser = (idUser) => {
-   let rpta = window.confirm('¿Desea eliminar el usuario?')
-   if (rpta) {
-    fetch('http://127.0.0.1:8000/user/user_juridic/'+idUser+'/', { method: 'DELETE' })
-    .then((res) => {
-       console.log(res)
-         var temp =Users.filter((i) => i.id !== idUser);
-         fetchUsers(temp)
-      }
-        
-      )
-   }
- 
- }
 
   useEffect(() => {
     getData()
@@ -187,92 +172,6 @@ export default function Home() {
       </aside>
       <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
       <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
-      {/* Main */}
-      <main>
-            <div class="pt-6 px-4">
-               <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-               <section class="container mx-auto p-6 font-mono">
-  <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-  <nav class="flex mb-5" aria-label="Breadcrumb">
-<ol class="inline-flex items-center space-x-1 md:space-x-2">
-<li class="inline-flex items-center">
-<a href="#" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
-<svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-Inicio
-</a>
-</li>
-<li>
-<div class="flex items-center">
-<svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-<a href="#" class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Usuarios</a>
-</div>
-</li>
-<li>
-<div class="flex items-center">
-<svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-<span class="text-gray-400 ml-1 md:ml-2 text-sm font-medium" aria-current="page">Usuarios Jurídicos</span>
-</div>
-</li>
-</ol>
-</nav>
-    <h1 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-5">Lista de Usuarios Jurídicos</h1>
-    <div class="w-full overflow-x-auto">
-      <table class="w-full">
-        <thead>
-          <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-            <th class="px-4 py-3">Empresa</th>
-            <th class="px-4 py-3">Gerente</th>
-            <th class="px-4 py-3">RUC</th>
-            <th class="px-4 py-3">Email</th>
-            <th class="px-4 py-3">Date_Joined</th>
-            <th class="px-4 py-3">Acciones</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white">
-        {Users.map((item, i) => {
-          return (
-            <tr class="text-gray-700">
-          
-            <td class="px-4 py-3 border">
-              <div class="flex items-center text-sm">
-                
-                <div>
-                  <p class="font-semibold text-black">{item.name}</p>
-                </div>
-              </div>
-            </td>
-            <td class="px-4 py-3 text-xs border">
-              <span class="px-2 py-1 font-semibold leading-tight text-blue-700 bg-blue-100 rounded-sm">{item.manager} </span>
-            </td>
-            <td class="px-4 py-3 text-ms border">{item.RUC}</td>
-            <td class="px-4 py-3 text-xs border">
-              <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">{item.user.email} </span>
-            </td>
-            <td class="px-4 py-3 text-sm border">{item.user.date_joined}</td>
-            <td class="px-4 py-3 text-xs border">
-
-            <button onClick={(e) => deleteUser(item.id)}  class="hidden sm:inline-flex ml-5 text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash -ml-1 mr-2 h-4 w-4" viewBox="0 0 16 16">
-            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg>
-                  ELIMINAR
-               </button>
-            </td>
-          </tr>
-          )
-        })}
-        
-        
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-               </div>
-            </div>
-         </main>
-         {/* EndMain */}
          {/* Footer */}
          <footer class="bg-white md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
             <ul class="flex items-center flex-wrap mb-6 md:mb-0">
@@ -310,10 +209,8 @@ Inicio
                </a>
             </div>
          </footer>
-                  {/* Footer */}
-         <p class="text-center text-sm text-gray-500 my-10">
-            &copy; 2019-2021 <a href="https://themesberg.com" class="hover:underline" target="_blank">Themesberg</a>. All rights reserved.
-         </p>
+                  {/* endFooter */}
+         
       </div>
    </div>
    <script async defer src="https://buttons.github.io/buttons.js"></script>
