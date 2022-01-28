@@ -92,13 +92,15 @@ class UserJuridic(models.Model):
 class UserNatural(models.Model):
     user = models.OneToOneField(
         CustomUser,
-        on_delete=models.CASCADE,
-        related_name='user_natural'
+        on_delete=models.SET_NULL,
+        related_name='user_natural',
+        null=True, blank=True
     )
     special_user = models.OneToOneField(
         SpecialUser,
-        on_delete=models.CASCADE,
-        related_name='user_natural'
+        on_delete=models.SET_NULL,
+        related_name='user_natural',
+        null=True, blank=True
     )
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
