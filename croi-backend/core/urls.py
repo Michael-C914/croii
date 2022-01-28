@@ -64,6 +64,7 @@ urlpatterns = [
              cache_timeout=0
          ),
          name='schema-redoc'),
+    path('api-project/', include('project.urls')),
 ]
 
 if settings.DEBUG:

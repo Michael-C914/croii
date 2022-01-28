@@ -84,7 +84,7 @@ class UserJuridic(models.Model):
         related_name='user_juridic',
         null=True, blank=True
     )
-    RUC = models.CharField(max_length=11)
+    RUC = models.CharField(max_length=11, unique=True)
     name = models.CharField(max_length=50)
     manager = models.CharField(max_length=50)
 
@@ -102,5 +102,4 @@ class UserNatural(models.Model):
     )
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
-    DNI = models.CharField(max_length=8)
-    special_user = models.CharField(max_length=8)
+    DNI = models.CharField(max_length=8, unique=True)
