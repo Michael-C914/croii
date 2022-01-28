@@ -6,7 +6,7 @@ export default function Home() {
   const [Users, fetchUsers] = useState([])
 
   const getData = () => {
-    fetch('http://127.0.0.1:8000/user/user_juridic/')
+    fetch('http://127.0.0.1:8000/user/user_natural/')
       .then((res) => res.json())
       .then((res) => {
         fetchUsers(res)
@@ -193,7 +193,7 @@ Inicio
 <li>
 <div class="flex items-center">
 <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-<span class="text-gray-400 ml-1 md:ml-2 text-sm font-medium" aria-current="page">Usuarios Jurídicos</span>
+<span class="text-gray-400 ml-1 md:ml-2 text-sm font-medium" aria-current="page">Usuarios Naturales</span>
 </div>
 </li>
 </ol>
@@ -203,9 +203,9 @@ Inicio
       <table class="w-full">
         <thead>
           <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-            <th class="px-4 py-3">Empresa</th>
-            <th class="px-4 py-3">Gerente</th>
-            <th class="px-4 py-3">RUC</th>
+            <th class="px-4 py-3">Nombre</th>
+            <th class="px-4 py-3">Apellidos</th>
+            <th class="px-4 py-3">DNI</th>
             <th class="px-4 py-3">Email</th>
             <th class="px-4 py-3">Date_Joined</th>
           </tr>
@@ -219,14 +219,14 @@ Inicio
               <div class="flex items-center text-sm">
                 
                 <div>
-                  <p class="font-semibold text-black">{item.name}</p>
+                  <p class="font-semibold text-black">{item.first_name}</p>
                 </div>
               </div>
             </td>
             <td class="px-4 py-3 text-xs border">
-              <span class="px-2 py-1 font-semibold leading-tight text-blue-700 bg-blue-100 rounded-sm">{item.manager} </span>
+              <span class="px-2 py-1 font-semibold leading-tight text-blue-700 bg-blue-100 rounded-sm">{item.last_name} </span>
             </td>
-            <td class="px-4 py-3 text-ms border">{item.RUC}</td>
+            <td class="px-4 py-3 text-ms border">{item.DNI}</td>
             <td class="px-4 py-3 text-xs border">
               <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">{item.user.email} </span>
             </td>
