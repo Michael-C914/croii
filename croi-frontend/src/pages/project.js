@@ -50,9 +50,11 @@ export default function Project() {
                     <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                     <Image className="w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full"  src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
                         <div className="p-6 transition duration-300 ease-in">
-                            <h2 className="text-base font-medium text-indigo-300 mb-1" key={i}>{urlCategory+item.category}
+                        <h2 className="text-base font-medium text-indigo-300 mb-1" key={i}>{
                             
-                            
+                            urlCategory+item.category
+
+                        }
                             </h2>
                             
                             <dl className="mt-4 text-xs font-medium flex items-center row-start-2 sm:mt-1 sm:row-start-3 md:mt-2.5 lg:row-start-2">
