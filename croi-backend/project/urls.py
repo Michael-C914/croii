@@ -4,15 +4,17 @@ from .views.viewsMedia import *
 from .views.viewsProject import *
 from .views.viewsRequestForm import *
 from rest_framework.routers import DefaultRouter
+from .views.viewsRequestForm import RequestFormViewSet2
 
 
-router = DefaultRouter()
+'''router = DefaultRouter()
 router.register(r'category_view', CategoryViewSet, basename='category_view')
 router.register(r'project_view', ProjectViewSet, basename='project_view')
-router.register(r'request_view', RequestFormViewSet, basename='request_view')
-router.register(r'media_view', MediaViewSet, basename='media_view')
+#router.register(r'request_view', RequestFormViewSet, basename='request_view')
+router.register(r'media_view', MediaViewSet, basename='media_view')'''
 
 urlpatterns = [
     #path('category-view/', views.CategoryViewSet.as_view()),
-    path('', include(router.urls))
+    #path('', include(router.urls)),
+    path('request', RequestFormViewSet2.as_view())
 ]

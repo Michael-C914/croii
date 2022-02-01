@@ -8,11 +8,11 @@ class RequestFormSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         requestform = RequestForm.objects.create(
-            user_juridic = validated_data['user_juridic'],
-            user_natural = validated_data['user_natural'],
-            proyect_integer = validated_data['proyect_integer'],
+            #user_juridic = validated_data['user_juridic'],
+            #user_natural = validated_data['user_natural'],
+            #proyect_integer = validated_data['proyect_integer'],
             description = validated_data['description'],
-            type_documents = validated_data['type_documents'],
+            #type_documents = validated_data['type_documents'],
             is_juridic = validated_data['is_juridic'],
             is_natural = validated_data['is_natural'],
             email = validated_data['email'],

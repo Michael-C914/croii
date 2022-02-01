@@ -29,7 +29,7 @@ class Project(models.Model):
 
 
 class RequestForm(models.Model):
-    user_juridic = models.ForeignKey(
+    '''user_juridic = models.ForeignKey(
         UserJuridic,
         null=True, blank=True,
         on_delete=models.SET_NULL,
@@ -46,7 +46,7 @@ class RequestForm(models.Model):
         null=True, blank=True,
         on_delete=models.SET_NULL,
         related_name="request_form"
-    )
+    )'''
     description = models.TextField()
     type_documents = models.CharField(
         choices=documents, default='P', max_length=1)
